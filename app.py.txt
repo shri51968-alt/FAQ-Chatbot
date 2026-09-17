@@ -1,0 +1,32 @@
+import streamlit as st
+
+st.set_page_config(
+    page_title="FAQ Chatbot",
+    page_icon="💬"
+)
+
+st.title("💬 FAQ Chatbot")
+st.write("Ask a question and get an answer from our FAQ chatbot.")
+
+faq = {
+    "what is your name": "My name is FAQ Chatbot.",
+    "who are you": "I am a simple FAQ chatbot created using Python and Streamlit.",
+    "what is python": "Python is a beginner-friendly programming language used for web development, automation, data analysis, and artificial intelligence.",
+    "what is streamlit": "Streamlit is a Python framework used to create interactive web applications easily.",
+    "how can i contact support": "You can contact support by sending an email to support@example.com.",
+    "what are your working hours": "Our working hours are Monday to Friday, 9 AM to 5 PM.",
+    "thank you": "You're welcome! Have a nice day.",
+}
+
+question = st.text_input("Enter your question:")
+
+if st.button("Get Answer"):
+    question = question.lower().strip()
+
+    if question in faq:
+        st.success(faq[question])
+    else:
+        st.warning(
+            "Sorry, I don't know the answer to that question. "
+            "Please try asking another FAQ."
+        )
